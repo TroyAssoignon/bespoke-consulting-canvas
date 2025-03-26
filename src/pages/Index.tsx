@@ -1,9 +1,8 @@
-
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { 
   Briefcase, 
-  MicrophoneStage, 
+  Mic, 
   Users, 
   BarChart4, 
   Building, 
@@ -19,7 +18,6 @@ import ImageWithEffect from "../components/ImageWithEffect";
 import CtaSection from "../components/CtaSection";
 
 const Index = () => {
-  // Apply animations on page load 
   useEffect(() => {
     const animateOnScroll = () => {
       const elements = document.querySelectorAll('.animate-on-scroll');
@@ -36,7 +34,6 @@ const Index = () => {
     };
     
     window.addEventListener('scroll', animateOnScroll);
-    // Run once on initial load
     animateOnScroll();
     
     return () => window.removeEventListener('scroll', animateOnScroll);
@@ -201,7 +198,7 @@ const Index = () => {
               <ServiceCard 
                 title="Executive Speaking"
                 description="Impactful keynotes and workshops for corporate events and leadership conferences."
-                icon={<MicrophoneStage className="w-6 h-6" />}
+                icon={<Mic className="w-6 h-6" />}
                 link="/speaking"
               />
             </div>
