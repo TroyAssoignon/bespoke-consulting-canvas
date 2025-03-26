@@ -1,9 +1,22 @@
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import ImageWithEffect from "../ImageWithEffect";
 
 const HeroSection = () => {
+  const imageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Apply animation to image only once on load instead of relying on general animation
+    const imageElement = imageRef.current;
+    if (imageElement) {
+      setTimeout(() => {
+        imageElement.classList.remove('opacity-0');
+        imageElement.classList.add('animate-fade-in');
+      }, 300); // Slight delay to ensure DOM is ready
+    }
+  }, []);
+
   return (
     <section className="pt-32 pb-24 md:pt-40 md:pb-32">
       <div className="container">
@@ -36,7 +49,7 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <div className="animate-fade-in-right opacity-0">
+          <div ref={imageRef} className="opacity-0">
             <ImageWithEffect 
               src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
               alt="Brooklyn Turner - Business Consultant" 

@@ -17,9 +17,11 @@ const useScrollAnimation = () => {
       });
     };
     
+    // Run once on initial load with a slight delay to ensure DOM is ready
+    setTimeout(animateOnScroll, 300);
+    
+    // Add the scroll listener after initial animation
     window.addEventListener('scroll', animateOnScroll);
-    // Run once on initial load to animate elements already in view
-    animateOnScroll();
     
     return () => window.removeEventListener('scroll', animateOnScroll);
   }, []);
